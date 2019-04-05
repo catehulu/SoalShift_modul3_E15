@@ -17,12 +17,12 @@ void swap(int* a, int* b)
     *b = t; 
 } 
 
-int partition (int result[], int low, int high) 
+int partition (int result[], int left, int right) 
 { 
-    int pivot = result[high];    
-    int i = (low - 1), j;  
+    int pivot = result[right];    
+    int i = (left - 1), j;  
   
-    for (j = low; j <= high- 1; j++) 
+    for (j = left; j <= right- 1; j++) 
     { 
         if (result[j] <= pivot) 
         { 
@@ -30,18 +30,18 @@ int partition (int result[], int low, int high)
             swap(&result[i], &result[j]); 
         } 
     } 
-    swap(&result[i + 1], &result[high]); 
+    swap(&result[i + 1], &result[right]); 
     return (i + 1); 
 } 
 
-void quickSort(int result[], int low, int high) 
+void quickSort(int result[], int left, int right) 
 { 
-    if (low < high) 
+    if (left < right) 
     { 
-        int pi = partition(result, low, high); 
+        int partition_index = partition(result, left, right); 
   
-        quickSort(result, low, pi - 1); 
-        quickSort(result, pi + 1, high); 
+        quickSort(result, left, partition_index - 1); 
+        quickSort(result, partition_index + 1, right); 
     } 
 } 
 
