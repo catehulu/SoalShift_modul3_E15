@@ -57,3 +57,17 @@ Untuk socket, terdapat pada permasalahan untuk menghubungkan server dengan clien
 memiliki socket berbeda.
 
 ## Nomor 5
+
+Pada soal 5, didalam code game terdapat 6 thread yang menangani tugas sendiri sendiri.
+Masing masing thread mempunyai tugas menampilkan UI, ready untuk menerima inputan,
+untuk menghitung cooldown kamar mandi, menghitung regen health dari pet, menghitung hunger, dan juga mengitung hygiene.
+Sedangkan dalam code market terdapat 2 thread yang menangani inputan dan outputan.
+
+Alasan dibuat thread tersendiri karena setiap thread memiliki kegunaan tersendiri yang tidak dapat
+diganggu oleh kebutuhan yang lain. Contohnya untuk UI pada shop harus menampilkan jumlah barang saat ini,
+tanpa menunggu inputan dari user. Bisa saja pemain pada game membeli stok pada toko, akan tetapi pada
+code shop(market) tetap menunggu inputan sehingga outputan jumlah barang pada saat itu tidak sesuai
+dengan kenyataan bahwa item dari toko telah dibeli oleh pemain dalam game.
+
+Dalam soal 5 ini juga membutuhkan shared memory, dimana mengharuskan sebuah data pada stok item di shop juga merupakan
+jumlah yang sama saat ditampilkan dishop dari sudut pandang pemain. Sehingga shared memory dibutuhkan pada soal nomor 5 ini.
