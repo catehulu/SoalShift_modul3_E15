@@ -15,14 +15,14 @@ int counterB = 1;
 void* counter1(void *arg)
 {
     sleep(10);
-    counterA = 1;
+    counterB = 1;
 
 }
 
 void* counter2(void *arg)
 {
     sleep(10);
-    counterB = 1;
+    counterA = 1;
 
 }
 
@@ -56,7 +56,7 @@ void* agmal(void *arg)
             
             if (counter == 3) {
                 pthread_create(&(local_thread), NULL, counter1, NULL);
-                counterA = 0;
+                counterB = 0;
             }
 
             mode = 3;
@@ -89,7 +89,7 @@ void* iraj(void *arg)
             if (Spirit_Status <= 0) {
                 printf("Iraj ikut tidur, dan bangun kesiangan bersama Agmal\n");
                 status = 0;
-		pthread_cancel(a);
+		        pthread_cancel(a);
                 return NULL;
             }
             
@@ -112,22 +112,7 @@ int main(void)
     char *input = malloc(50*sizeof(char));
     int err;
     pthread_create(&(a), NULL, &agmal, NULL);
-    // if(err != 0){
-    //     printf("Pembuatan thread gagal");
-    // }
-    // else
-    // {
-    //     printf("Thread berhasil dibuat");
-    // }
-    
     pthread_create(&(s), NULL, &iraj, NULL);
-    // if(err != 0){
-    //     printf("Pembuatan thread gagal");
-    // }
-    // else
-    // {
-    //     printf("Thread berhasil dibuat");
-    // }
 
     while(status){
         fgets(input, 50, stdin);
