@@ -38,7 +38,7 @@ void* agmal(void *arg)
             printf("Agmal WakeUp_Status = %d\n",WakeUp_Status);
             sleep(1);
         }
-        else if (!counterA)
+        else if (!counterA && status)
         {
             printf("Agmal Ayo Bangun disabled 10 s\n");
             mode = 3;
@@ -57,6 +57,7 @@ void* agmal(void *arg)
             if (counter == 3) {
                 pthread_create(&(local_thread), NULL, counter1, NULL);
                 counterB = 0;
+                counter = 0;
             }
 
             mode = 3;
@@ -78,7 +79,7 @@ void* iraj(void *arg)
             printf("Iraj Spirit_Status = %d\n",Spirit_Status);
             sleep(1);
         }
-        else if (!counterB)
+        else if (!counterB && status)
         {
             printf("Iraj Ayo Tidur disabled 10 s\n");
             mode = 3;
@@ -96,6 +97,7 @@ void* iraj(void *arg)
             if (counter == 3) {
                 pthread_create(&(local_thread), NULL, counter2, NULL);
                 counterB = 0;
+                counter = 0;
             }
 
             mode = 3;
